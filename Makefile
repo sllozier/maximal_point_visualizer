@@ -46,7 +46,7 @@ run_tests: generate_txt_file
 
 
 # Rule to compile and run project
-run_project: 
+run_project: generate_txt_file
 	cd $(BIN_DIR) && $(JVM) --module-path "../$(LIB_DIR)" --add-modules javafx.controls,javafx.fxml -cp .:../$(SRC_DIR) main.Project2
 
 # Rule to clean up

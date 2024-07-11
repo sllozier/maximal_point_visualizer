@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Objects;
-
 /**
  * Name: Sarah L. Lozier
  * Class: CMSC 315 - 6980
@@ -52,10 +50,7 @@ public class Point implements Comparable<Point> {
 	 *         false otherwise.
 	 */
 	public boolean isBelowAndLeftOf(Point other) {
-		// System.out.println("OTHER " + other.x + " " + other.y);
-		// System.out.println("THIS " + this.x + " " + this.y);
-		boolean result = this.x < other.x && this.y < other.y;
-		System.out.println("BELOW LEFT RESULT: " + result);
+		boolean result = other.x < this.x && other.y > this.y;
 		return result;
 	}
 

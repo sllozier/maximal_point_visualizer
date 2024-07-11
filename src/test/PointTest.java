@@ -43,10 +43,9 @@ public class PointTest {
 	 */
 	public static boolean testConstructor() {
 		System.out.println("🧪 TEST 1 🧪");
-		Point p = new Point(3.5, 4.5);
+		Point p = new Point(100.0, 200.0);
 		boolean expectedOutput = true;
-		boolean actualOutput = (p != null);
-
+		boolean actualOutput = p.getX() == 100.0 && p.getY() == 200.0;
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -58,10 +57,9 @@ public class PointTest {
 	 */
 	public static boolean testGetX() {
 		System.out.println("🧪 TEST 2 🧪");
-		Point p = new Point(3.5, 4.5);
-		double expectedOutput = 3.5;
+		Point p = new Point(100.0, 200.0);
+		double expectedOutput = 100.0;
 		double actualOutput = p.getX();
-
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -73,10 +71,9 @@ public class PointTest {
 	 */
 	public static boolean testGetY() {
 		System.out.println("🧪 TEST 3 🧪");
-		Point p = new Point(3.5, 4.5);
-		double expectedOutput = 4.5;
+		Point p = new Point(100.0, 200.0);
+		double expectedOutput = 200.0;
 		double actualOutput = p.getY();
-
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -88,11 +85,10 @@ public class PointTest {
 	 */
 	public static boolean testIsBelowAndLeftOf() {
 		System.out.println("🧪 TEST 4 🧪");
-		Point p1 = new Point(3.5, 4.5);
-		Point p2 = new Point(5.5, 6.5);
-		boolean expectedOutput = true;
+		Point p1 = new Point(100.0, 200.0);
+		Point p2 = new Point(150.0, 150.0);
+		boolean expectedOutput = false;
 		boolean actualOutput = p1.isBelowAndLeftOf(p2);
-
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -104,11 +100,10 @@ public class PointTest {
 	 */
 	public static boolean testCompareTo() {
 		System.out.println("🧪 TEST 5 🧪");
-		Point p1 = new Point(3.5, 4.5);
-		Point p2 = new Point(5.5, 6.5);
+		Point p1 = new Point(100.0, 200.0);
+		Point p2 = new Point(150.0, 150.0);
 		int expectedOutput = -1;
 		int actualOutput = p1.compareTo(p2);
-
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}

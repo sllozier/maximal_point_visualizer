@@ -57,12 +57,9 @@ public class MaximalPointsPaneTest extends Application {
 		System.out.println("🧪 TEST 1 🧪");
 		ArrayList<Point> points = new ArrayList<>();
 		points.add(new Point(100.0, 100.0));
-		points.add(new Point(200.0, 200.0));
 		MaximalPointsPane pane = new MaximalPointsPane(points);
-
 		boolean expectedOutput = true;
-		boolean actualOutput = (pane != null);
-
+		boolean actualOutput = pane.getPoints().size() == 1;
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -76,11 +73,9 @@ public class MaximalPointsPaneTest extends Application {
 		System.out.println("🧪 TEST 2 🧪");
 		ArrayList<Point> points = new ArrayList<>();
 		MaximalPointsPane pane = new MaximalPointsPane(points);
-		pane.addPoint(new Point(150.0, 150.0));
-
+		pane.addPoint(new Point(100.0, 100.0));
 		boolean expectedOutput = true;
-		boolean actualOutput = (pane.getPoints().size() == 1);
-
+		boolean actualOutput = pane.getPoints().size() == 1;
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -93,14 +88,11 @@ public class MaximalPointsPaneTest extends Application {
 	public static boolean testRemovePoint() {
 		System.out.println("🧪 TEST 3 🧪");
 		ArrayList<Point> points = new ArrayList<>();
-		Point pointToRemove = new Point(200.0, 200.0);
-		points.add(pointToRemove);
+		points.add(new Point(100.0, 100.0));
 		MaximalPointsPane pane = new MaximalPointsPane(points);
-		pane.removePoint(pointToRemove);
-
+		pane.removePoint(new Point(100.0, 100.0));
 		boolean expectedOutput = true;
-		boolean actualOutput = (pane.getPoints().size() == 0);
-
+		boolean actualOutput = pane.getPoints().size() == 0;
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
 	}
@@ -113,21 +105,26 @@ public class MaximalPointsPaneTest extends Application {
 	public static boolean testMaximalPointsCalculation() {
 		System.out.println("🧪 TEST 4 🧪");
 		ArrayList<Point> points = new ArrayList<>();
-		points.add(new Point(100.0, 100.0));
-		points.add(new Point(200.0, 200.0));
-		points.add(new Point(150.0, 150.0));
+		points.add(new Point(200.0, 300.0));
+		points.add(new Point(250.0, 300.0));
+		points.add(new Point(330.0, 270.0));
+		points.add(new Point(150.0, 380.0));
+		points.add(new Point(126.0, 172.0));
+		points.add(new Point(397.0, 379.0));
+		points.add(new Point(337.0, 441.0));
+		points.add(new Point(53.0, 288.0));
+		points.add(new Point(89.0, 433.0));
+		points.add(new Point(182.0, 215.0));
+		points.add(new Point(251.0, 414.0));
 		MaximalPointsPane pane = new MaximalPointsPane(points);
+
 		pane.calculateMaximalPoints();
 
-		// Assuming that maximal points for the given set are (200.0, 200.0)
 		ArrayList<Point> maximalPoints = pane.getMaximalPoints();
-
-		// Adjusting the expected output to match the set points
-		ArrayList<Point> expectedMaximalPoints = new ArrayList<>();
-		expectedMaximalPoints.add(new Point(200.0, 200.0));
-
 		boolean expectedOutput = true;
-		boolean actualOutput = maximalPoints.equals(expectedMaximalPoints);
+		boolean actualOutput = maximalPoints.size() == 4 && maximalPoints.contains(new Point(126.0, 172.0))
+				&& maximalPoints.contains(new Point(182.0, 215.0)) && maximalPoints.contains(new Point(330.0, 270.0))
+				&& maximalPoints.contains(new Point(397.0, 379.0));
 
 		System.out.println("Expected output: " + expectedOutput + ", Actual output: " + actualOutput);
 		return actualOutput == expectedOutput;
