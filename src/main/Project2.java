@@ -73,6 +73,15 @@ public class Project2 extends Application {
 		return points;
 	}
 
+	/**
+	 * Creates a JavaFX scene with a MaximalPointsPane initialized with the provided
+	 * points.
+	 *
+	 * @param points An ArrayList of Point objects to be displayed in the pane.
+	 * @return A Scene object containing the MaximalPointsPane, or null if an error
+	 *         occurs.
+	 */
+
 	public Scene createScene(ArrayList<Point> points) {
 		try {
 			MaximalPointsPane pane = new MaximalPointsPane(points);

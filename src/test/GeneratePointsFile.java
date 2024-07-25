@@ -16,6 +16,12 @@ import java.util.Random;
 
 public class GeneratePointsFile {
 
+	/**
+	 * Generates a file with random points.
+	 *
+	 * @param fileName       The name of the file to write the points to.
+	 * @param numberOfPoints The number of random points to generate.
+	 */
 	public static void generateRandomPointsFile(String fileName, int numberOfPoints) {
 		FileWriter fileWriter = null;
 
@@ -33,7 +39,7 @@ public class GeneratePointsFile {
 			for (int i = 0; i < numberOfPoints; i++) {
 				double x = Math.round(random.nextDouble() * 5000) / 10.0;
 				double y = Math.round(random.nextDouble() * 5000) / 10.0;
-				// Ensure x and y are within the 500x500 range
+				// Make sure x and y are within the 500x500 range
 				x = Math.min(x, 499.9);
 				y = Math.min(y, 499.9);
 				fileWriter.write(x + " " + y + "\n");
@@ -54,6 +60,12 @@ public class GeneratePointsFile {
 		}
 	}
 
+	/**
+	 * Main method to generate a points.txt file with random points.
+	 * Ensures the directory exists and calls the method to generate points.
+	 *
+	 * @param args Command-line arguments (not used).
+	 */
 	public static void main(String[] args) {
 		// Get the directory of the root project directory
 		String basePath = new File("").getAbsolutePath();

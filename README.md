@@ -1,10 +1,8 @@
 <!-- Title -->
-<h1 align="center">Trip Cost Calculator</h1>
+<h1 align="center">Maximal Point Visualizer</h1>
 <p align="center">
 
-
-
-<i>This project features a Java application comprising two classes: Project3 and TripCost. The Project3 class defines a graphical user interface (GUI) facilitating user input of trip details such as distance, gas cost per unit, gas mileage, number of days, hotel cost, food cost, and attractions cost. On the other hand, the TripCost class functions as an immutable representation of a trip cost object, with a constructor to instantiate TripCost instances encapsulating trip parameters and a method to compute and return the total trip cost. Together, these classes provide users with a convenient tool to estimate trip expenses, aiding in better travel planning and budget management. The user-friendly interface enables effortless input of trip details, resulting in accurate cost estimates and enhancing the overall travel experience.
+<i>The Maximal Point Visualizer is a JavaFX application designed to determine and visualize the set of maximal points among a given set of points in a 2D plane. A point is considered maximal if no other point is above it or to its right. The application reads points from a file, allows user interaction to add or remove points via mouse clicks, and dynamically updates the maximal points and their connections. Key features include dynamic point management, where points can be added with a left mouse click and removed with a right mouse click; maximal point calculation that identifies and visualizes maximal points by connecting them with lines; interactive visualization with color-coded points and hover functionality displaying coordinates; and a user-friendly interface that adapts to the addition or removal of points, ensuring an up-to-date graphical representation. This project leverages JavaFX for the graphical interface and includes a robust backend for point management and maximal point calculations, providing a clear and interactive way to explore the concept of maximal points in computational geometry.
 </i></p>
 
 ---
@@ -32,6 +30,7 @@ This guide provides instructions on how to set up and run the project using two 
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - Java JDK
 - [JavaJX](https://openjdk.org/) (Note: JavaFX is required to run the project. Download and install it before proceeding. Place the JavaFX .jar files in a `lib` directory at the root of the project.)
 - Git (for cloning the repository)
@@ -46,66 +45,34 @@ The suggested file structure for your project is as follows:
 ```
 
 .
-└── road_trip_cost/
-    ├── .vscode/
-    │   ├── launch.json
-    │   └── settings.json
+└── maximal_point_visualizer/
     ├── bin/
-    │   ├── main class files
-    │   ├── test class files
-    │   └── trips.json
+    │   ├── docs/
+    │   │   └── points.txt
+    │   ├── main/
+    │   │   └── .class files
+    │   └── test/
+    │       └── .class files
     ├── lib/
     │   └── javafx.jar files
     ├── public/
-    │   └── image files
+    │   └── project2_uml.png
     ├── src/
     │   ├── main/
     │   │   ├── Controller.java
     │   │   ├── main.fxml
-    │   │   ├── Project3.java
-    │   │   └── TripCost.java
+    │   │   ├── MaximalPointsPane.java
+    │   │   ├── Point.java
+    │   │   └── Project2.java
     │   └── test/
-    │       ├── GenerateTripData.java
-    │       ├── Project3Test.java
-    │       ├── TestRunner.java
-    │       └── TripCostTest.java
-    ├── Makefile
+    │       ├── GeneratePointsFile.java
+    │       ├── MaximalPointsPaneTest.java
+    │       ├── PointTest.java
+    │       ├── Project2Test.java
+    │       └── TestRunner.java
     ├── .gitignore
+    ├── Makefile
     └── README.md
-
-```
-
-</details>
-
-### Setup launch.json
-
-Every file that requires usage of the JavaFX modules, needs “vmArgs” in its configuration.
-
-<details>
-<summary><b>See launch.json Example</b></summary>
-
-```
-
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "java",
-      "name": "GenerateTripData",
-      "request": "launch",
-      "mainClass": "test.GenerateTripData",
-      "projectName": "road_trip_cost_7cb99a68"
-    },
-    {
-      "type": "java",
-      "name": "Project3Test",
-      "request": "launch",
-      "mainClass": "test.Project3Test",
-      "projectName": "road_trip_cost_7cb99a68",
-      "vmArgs": "--module-path /home/slozier/Desktop/javafx-sdk-21.0.2/lib --add-modules javafx.controls,javafx.fxml"
-    }
-  ]
-}
 
 ```
 
@@ -115,25 +82,23 @@ Every file that requires usage of the JavaFX modules, needs “vmArgs” in its 
 
 1. **Clone the Repository**
 
-   Open your terminal and run the following command to clone the repository: **`git clone git@github.com:sllozier/road_trip_cost.git`**
-
+   Open your terminal and run the following command to clone the repository: **`git clone git@github.com:sllozier/maximal_point_visualizer.git`**
 
 2. **Navigate to the Project Directory**
 
-    Once the repository is cloned, navigate to the project directory: **`cd path/to/road_trip_cost`**
+    Once the repository is cloned, navigate to the project directory: **`cd path/to/maximal_point_visualizer`**
 
 3. **Using the Makefile**
 
     - To generate text files, compile the project, run tests, and then run the project code (if tests pass), use: **`make all`**
 
-    - To only generate the text files, use: **`make generate_json_file`**
+    - To only generate the text files, use: **`make generate_txt_file`**
 
     - To run tests (this will also generate text files), use:**`make run_tests`**
 
     - To run the project code (this will also generate text files), use:**`make run_project`**
 
     - To clean up and remove generated files, use: **`make clean`**
-
 
 ### Option 2️⃣ : Downloading the ZIP File
 
@@ -143,7 +108,7 @@ Every file that requires usage of the JavaFX modules, needs “vmArgs” in its 
 
 2. **Navigate to the Project Directory**
 
-    Open your terminal and navigate to the extracted project directory: **`cd path/to/extracted/road_trip_cost`**
+    Open your terminal and navigate to the extracted project directory: **`cd path/to/extracted/maximal_point_visualizer`**
 
 3. **Using the Makefile**
 
@@ -151,42 +116,31 @@ Every file that requires usage of the JavaFX modules, needs “vmArgs” in its 
 
 ---
 
-*Remember to replace **`[repository URL]`** and **`path/to/road_trip_cost`** with the actual URL of your repository and the path to the **`road_trip_cost`** directory in your local system. This guide assumes that the Makefile is located in the **`road_trip_cost`** directory and is set up as previously discussed.*
+*Remember to replace **`[repository URL]`** and **`path/to/maximal_point_visualizer`** with the actual URL of your repository and the path to the **`maximal_point_visualizer`** directory in your local system. This guide assumes that the Makefile is located in the **`maximal_point_visualizer`** directory and is set up as previously discussed.*
 
 ---
 
 ## Approach
 
-For this project, I began by analyzing the requirements outlined in the project description. I identified the need for two classes: `TripCost` to handle trip cost calculations and `Project3` to manage the user interface. I chose Java for its robustness and platform independence. Leveraging JavaFX, I designed the GUI with a grid layout for user input and feedback components. Throughout development, I prioritized modularity and encapsulation, ensuring each class had well-defined responsibilities. I conducted thorough testing to ensure the application's functionality and user experience met the project requirements. Finally, I facilitated project management and automation by implementing a Makefile, streamlining tasks such as compilation, testing, and running the application.
+For this project, I developed a JavaFX application to determine and visualize the maximal points in a 2D plane. The application reads a set of points from a file and dynamically updates the maximal points based on user interactions. The project consists of three main classes: `Point`, `MaximalPointsPane`, and `Project2`.
+
+- **Point:** An immutable class representing a point with x and y coordinates, implementing the Comparable interface. It includes methods for coordinate retrieval and comparison, and a method to determine if another point is below and to the left.
+- **MaximalPointsPane:** Extends the JavaFX Pane class, manages the set of points, and calculates maximal points. It includes methods to add or remove points via mouse clicks and draw lines connecting maximal points. Hover functionality highlights points and displays their coordinates.
+- **Project2:** Defines the scene containing the pane, reads the initial set of points from a file, and integrates with the JavaFX application.
+
+I began by analyzing the problem and planning the class structure. I used a test-driven approach, making sure each component functioned correctly before integration. My testing validated the logic, and debugging ensured the visualizer displayed points and lines accurately. The final application combines interactive graphics with robust data handling, providing a clear visual representation of maximal points.
 
 ## Assumptions
 
-I assumed that users would interact with the GUI components in a logical manner, following the intended workflow of entering trip details and triggering cost calculations. Lastly, I assumed that the Makefile setup and directory structure would remain consistent across development environments, enabling seamless compilation, testing, and execution of the application. These assumptions guided the design and testing phases, ensuring the project's functionality aligned with user expectations.
+For the development of the Maximal Point Visualizer, several assumptions were made to streamline the implementation and make sure the project's requirements were met. It is assumed that the input file containing the points is formatted correctly, with each line containing two floating-point numbers representing the x and y coordinates, respectively. The application presumes a static pane size of 500x500 pixels, though it dynamically adjusts the visualization based on the window's size. Mouse interactions are assumed to be standard, with left-clicks adding points and right-clicks removing points. It is also assumed that the JavaFX environment is properly set up and configured for the application to run without issues. These assumptions allowed for focused development on the core functionalities of point management and maximal point visualization.
 
 ## Lessons Learned
 
-Throughout the development process, several key insights were gained:
-
-- **Handling JavaFX Application Threads**: Encountered an `IllegalStateException` due to running the JavaFX `Application` in multiple files. Properly closing the JavaFX Application using `primaryStage.close()` resolved this issue. Similarly, terminating the Application thread properly using `Platform.exit()` prevented the process from hanging up during tests.
-
-- **Testing Challenges**: Initially attempted to traverse nodes using `javafx.scene.Node` in `Project3Test`, but encountered issues. Recognized that utilizing a testing library like JUnit could have simplified this process and enhanced testing efficiency.
-
-- **Makefile Modification**: Utilized a Makefile for project organization, but encountered challenges due to the usage of a .json file for testing and JavaFX .jars for other classes. Had to modify file paths within the Makefile to accommodate different directories. This involved rewriting the path to the json file in `TripCostTest` to prevent hardcoding and ensure flexibility across environments.
-
+A part of my learning disability involves switching opposite terms, which affected the initial logic of the program. I kept swapping left and right, as well as up and down, leading to errors in the `isBelowAndLeftOf` method. This also caused my testing logic to be incorrect, making debugging more challenging. I relied on the given points and image in the instructional PDF to guide me and observed the behavior of the code in the graphical interface. This visual feedback helped me realize the directional swaps. Once I identified the issue, I adjusted the logic and testing accordingly, resulting in a properly functioning program. This experience emphasized the importance of visual validation and iterative debugging.
 
 ## Possible Improvements
 
-To further enhance the project, the following areas can be addressed:
-
-- **Refactor Testing**: I could enhance the testing approach by transitioning to `JUnit`. Instead of manually creating test cases and running them in separate classes, I could utilize JUnit's framework to create organized test classes with annotated methods for each test case. This would streamline the testing process and improve maintainability.
-
-- **User Interface Enhancements**: There is room for improvement in the user interface by incorporating visual feedback to indicate the progress or completion of operations. Implementing features such as loading spinners during data processing or confirmation messages upon task completion would enhance the user experience and make the application more user-friendly.
-
-- **Modularization and Encapsulation**: To enhance the codebase's organization and maintainability, I could modularize and encapsulate the code into smaller, well-defined modules. This would involve breaking down the application into separate modules for GUI components, business logic, and data access, promoting modularity and encapsulation principles.
-
-- **Integration Testing**: Developing integration tests to validate the interactions between different components of the application would ensure its robustness. By creating tests that verify the interactions between UI components, business logic, and data access layers, I can ensure that the application functions correctly as a whole.
-
-- **Code Duplication in Test Classes**: Both `TripCostTest.java` and `Project3Test.java` classes contain duplicated code for handling file I/O operations, such as reading JSON data from a file and parsing it. To avoid this duplication, I could refactor the code by creating a common utility method for these operations. This utility method could be placed in a separate utility class and reused across both test classes, improving code maintainability and reducing redundancy.
+There are several ways to enhance the current implementation of the maximal point visualizer. One improvement would be to optimize the algorithm for calculating maximal points to handle larger datasets more efficiently. This could involve implementing a more sophisticated algorithm or using data structures that reduce the computational complexity. Additionally, enhancing the user interface with features such as zooming and panning would provide a better user experience when dealing with larger sets of points. Another improvement could be adding functionality for saving and loading different sets of points, allowing users to preserve their work and continue later. Lastly, incorporating more detailed error handling and user feedback would make the application more robust and user-friendly.
 
 ---
 
@@ -194,11 +148,10 @@ To further enhance the project, the following areas can be addressed:
 
 <details>
 <summary><b>See Diagram</b></summary>
-<img align="center" width="750" src="./public/project3_uml.png" alt="UML Diagram Missing">
+<img align="center" width="750" src="./public/project2_uml.png" alt="UML Diagram Missing">
 </details>
 
 ---
-
 
 <h2 align="center">Contact Me 🦄</h2>
 <!-- Contact Me -->
@@ -215,5 +168,3 @@ To further enhance the project, the following areas can be addressed:
   </a>
   </kbd>
 </p>
-
-
